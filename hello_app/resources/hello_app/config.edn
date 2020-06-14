@@ -1,0 +1,15 @@
+{:duct.profile/base
+ {:duct.core/project-ns hello-app
+
+  :duct.router/ataraxy
+  {:routes {[:get "/"] [:hello-app.handler/hello]}}
+
+  :hello-app.handler/hello {}}
+
+ :duct.profile/dev   #duct/include "dev"
+ :duct.profile/local #duct/include "local"
+ :duct.profile/prod  {}
+
+ :duct.module/logging {}
+ :duct.module.web/site
+ {}}
