@@ -10,14 +10,20 @@
       (t/testing "should get home"
         (-> (k/session routes)
             (k/visit "/static_pages/home")
-            (kt/has (kt/status? 200))))
+            (kt/has (kt/status? 200))
+            (k/within [:title]
+                      (kt/has (kt/text? "Home | Ruby on Rails Tutorial Sample App")))))
 
       (t/testing "should get help"
         (-> (k/session routes)
             (k/visit "/static_pages/help")
-            (kt/has (kt/status? 200))))
+            (kt/has (kt/status? 200))
+            (k/within [:title]
+                      (kt/has (kt/text? "Help | Ruby on Rails Tutorial Sample App")))))
 
       (t/testing "should get about"
         (-> (k/session routes)
             (k/visit "/static_pages/about")
-            (kt/has (kt/status? 200)))))))
+            (kt/has (kt/status? 200))
+            (k/within [:title]
+                      (kt/has (kt/text? "About | Ruby on Rails Tutorial Sample App"))))))))

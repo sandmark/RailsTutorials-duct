@@ -4,8 +4,12 @@
 (defn render-home []
   (hiccup/html
    {:mode :html}
-   [:h1 "Sample App"]
-   [:p
-    "This is the home page for the "
-    [:a {:href "https://railstutorial.jp/"} "Ruby on Rails Tutorial"]
-    " sample application."]))
+   [:html
+    [:head
+     [:title "Home | Ruby on Rails Tutorial Sample App"]]
+    [:body
+     [:h1 "Sample App"]
+     [:p
+      "This is the home page for the "
+      [:a {:href "https://railstutorial.jp/"} "Ruby on Rails Tutorial"]
+      " sample application."]]]))
