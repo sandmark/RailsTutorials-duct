@@ -1,6 +1,12 @@
-# sample_app
+# Ruby on Rails チュートリアルのサンプルアプリケーション (duct ver)
 
-FIXME: description
+これは、次の教材で作られたサンプルアプリケーションです。
+[*Ruby on Rails チュートリアル*](https://railstutorial.jp/)
+[Michael Hartl](http://www.michaelhartl.com/) 著
+
+## ライセンス
+[Ruby on Rails チュートリアル](https://railstutorial.jp/)内にある
+ソースコードは MIT ライセンスと Beerware ライセンスのもとで公開されています。
 
 ## Developing
 
@@ -64,7 +70,3 @@ But you can also run tests through Leiningen.
 ```sh
 lein test
 ```
-
-## Legal
-
-Copyright © 2020 FIXME
