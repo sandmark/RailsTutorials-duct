@@ -6,24 +6,25 @@
 
 (t/deftest static-pages-with-kerodon-test
   (with-system [system (helper/test-system)]
-    (let [routes (:duct.router/ataraxy system)]
+    (let [routes     (:duct.router/ataraxy system)
+          base-title "Ruby on Rails Tutorial Sample App"]
       (t/testing "should get home"
         (-> (k/session routes)
             (k/visit "/static_pages/home")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? "Home | Ruby on Rails Tutorial Sample App")))))
+                      (kt/has (kt/text? (str "Home | " base-title))))))
 
       (t/testing "should get help"
         (-> (k/session routes)
             (k/visit "/static_pages/help")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? "Help | Ruby on Rails Tutorial Sample App")))))
+                      (kt/has (kt/text? (str "Help | " base-title))))))
 
       (t/testing "should get about"
         (-> (k/session routes)
             (k/visit "/static_pages/about")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? "About | Ruby on Rails Tutorial Sample App"))))))))
+                      (kt/has (kt/text? (str "About | " base-title)))))))))
