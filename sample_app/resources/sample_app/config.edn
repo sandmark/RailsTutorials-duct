@@ -4,14 +4,16 @@
   :duct.router/ataraxy
   {:routes {"/" [:sample-app.handler/hello]
             "/static_pages"
-            {"/home"  [:sample-app.handler.static/home]
-             "/help"  [:sample-app.handler.static/help]
-             "/about" [:sample-app.handler.static/about]}}}
+            {"/home"    [:sample-app.handler.static/home]
+             "/help"    [:sample-app.handler.static/help]
+             "/about"   [:sample-app.handler.static/about]
+             "/contact" [:sample-app.handler.static/contact]}}}
 
-  :sample-app.handler/hello        {}
-  :sample-app.handler.static/home  {}
-  :sample-app.handler.static/help  {}
-  :sample-app.handler.static/about {}}
+  :sample-app.handler/hello          {}
+  :sample-app.handler.static/home    {}
+  :sample-app.handler.static/help    {}
+  :sample-app.handler.static/about   {}
+  :sample-app.handler.static/contact {}}
 
  :duct.profile/dev   #duct/include "dev"
  :duct.profile/local #duct/include "local"

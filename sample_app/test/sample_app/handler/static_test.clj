@@ -27,4 +27,11 @@
             (k/visit "/static_pages/about")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? (str "About | " base-title)))))))))
+                      (kt/has (kt/text? (str "About | " base-title))))))
+
+      (t/testing "should get contact"
+        (-> (k/session routes)
+            (k/visit "/static_pages/contact")
+            (kt/has (kt/status? 200))
+            (k/within [:title]
+                      (kt/has (kt/text? (str "Contact | " base-title)))))))))
