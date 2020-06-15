@@ -15,6 +15,7 @@
 
  :duct.profile/dev   #duct/include "dev"
  :duct.profile/local #duct/include "local"
+ :duct.profile/test  #duct/include "testenv"
  :duct.profile/prod  {}
 
  :duct.module/logging {}
