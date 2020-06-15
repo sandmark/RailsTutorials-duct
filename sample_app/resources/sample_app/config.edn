@@ -2,7 +2,9 @@
  {:duct.core/project-ns sample-app
 
   :duct.router/ataraxy
-  {:routes {}}}
+  {:routes {"/" [:handler/hello]}}
+
+  :handler/hello {}}
 
  :duct.profile/dev   #duct/include "dev"
  :duct.profile/local #duct/include "local"
