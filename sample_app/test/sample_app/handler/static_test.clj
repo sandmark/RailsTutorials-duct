@@ -8,6 +8,13 @@
   (with-system [system (helper/test-system)]
     (let [routes     (:duct.router/ataraxy system)
           base-title "Ruby on Rails Tutorial Sample App"]
+      (t/testing "should get root"
+        (-> (k/session routes)
+            (k/visit "/")
+            (kt/has (kt/status? 200))
+            (k/within [:title]
+                      (kt/has (kt/text? (str "Home | " base-title))))))
+
       (t/testing "should get home"
         (-> (k/session routes)
             (k/visit "/static_pages/home")
