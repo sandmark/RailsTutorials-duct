@@ -19,7 +19,7 @@
    :uberjar      {:aot :all}
    :profiles/dev {}
    :project/dev  {:source-paths   ["dev/src"]
-                  :resource-paths ["dev/resources"]
+                  :resource-paths ["dev/resources" "test/resources"]
                   :dependencies   [[integrant/repl "0.3.1"]
                                    [eftest "0.5.9"]
                                    [kerodon "0.9.1"]

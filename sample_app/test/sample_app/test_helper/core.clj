@@ -10,6 +10,11 @@
       duct/read-config
       (duct/prep-config [:duct.profile/dev :duct.profile/test])))
 
+(defn test-data []
+  (-> (io/resource "sample_app_test/data.edn")
+      slurp
+      read-string))
+
 (defmacro with-system [[bound-var binding-expr] & body]
   `(let [~bound-var (ig/init ~binding-expr)]
      (try

@@ -7,7 +7,7 @@
 (t/deftest static-pages-with-kerodon-test
   (with-system [system (helper/test-system)]
     (let [routes     (:duct.router/ataraxy system)
-          base-title "Ruby on Rails Tutorial Sample App"]
+          base-title (:sample-app.view.template/title (helper/test-data))]
       (t/testing "should get root"
         (-> (k/session routes)
             (k/visit "/")
