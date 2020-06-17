@@ -3,7 +3,7 @@
 
 (defn render-home []
   (page
-   {:title "Home"}
+   {}
    [:h1 "Sample App"]
    [:p
     "This is the home page for the "

@@ -13,14 +13,14 @@
             (k/visit "/")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? (str "Home | " base-title))))))
+                      (kt/has (kt/text? base-title)))))
 
       (t/testing "should get home"
         (-> (k/session routes)
             (k/visit "/static_pages/home")
             (kt/has (kt/status? 200))
             (k/within [:title]
-                      (kt/has (kt/text? (str "Home | " base-title))))))
+                      (kt/has (kt/text? base-title)))))
 
       (t/testing "should get help"
         (-> (k/session routes)
