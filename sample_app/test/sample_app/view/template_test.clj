@@ -1,8 +1,8 @@
 (ns sample-app.view.template-test
   (:require [clojure.test :as t]
-            [kerodon.core :as k]
+            [kerodon.core :refer [within]]
             [kerodon.impl :as ki]
-            [kerodon.test :as kt]
+            [kerodon.test :refer [has text?]]
             [sample-app.test-helper.core :as helper]
             [sample-app.view.template :as sut]))
 
@@ -11,11 +11,11 @@
     (t/testing "Base Title"
       (-> {:response {:body (sut/page {})}}
           ki/include-parse
-          (k/within [:title]
-                    (kt/has (kt/text? base-title)))))
+          (within [:title]
+                  (has (text? base-title)))))
 
     (t/testing "Custom Title"
       (-> {:response {:body (sut/page {:title "Custom"})}}
           ki/include-parse
-          (k/within [:title]
-                    (kt/has (kt/text? (str "Custom | " base-title))))))))
+          (within [:title]
+                  (has (text? (str "Custom | " base-title))))))))
