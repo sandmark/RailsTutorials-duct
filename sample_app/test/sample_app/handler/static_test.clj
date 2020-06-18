@@ -35,3 +35,14 @@
             (kt/has (kt/status? 200))
             (k/within [:title]
                       (kt/has (kt/text? (str "Contact | " base-title)))))))))
+
+(t/deftest site-layout-test
+  (t/testing "layout link"
+    (with-system [system (helper/test-system)]
+      (let [routes (:duct.router/ataraxy system)]
+        (-> (k/session routes)
+            (k/visit "/")
+            (kt/has (kt/link? "Home" "/"))
+            (kt/has (kt/link? "Help" "/help"))
+            (kt/has (kt/link? "About" "/about"))
+            (kt/has (kt/link? "Contact" "/contact")))))))
