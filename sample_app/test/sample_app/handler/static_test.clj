@@ -13,7 +13,8 @@
             (visit "/")
             (has (status? 200))
             (within [:title]
-                    (has (text? base-title)))))
+                    (has (text? base-title)))
+            (has (link? "Sign up now!" "/signup"))))
 
       (t/testing "should get help"
         (-> (session routes)

@@ -12,6 +12,6 @@
      (link-to "https://railstutorial.jp/" "Ruby on Rails Tutorial")
      " sample application."]
 
-    (link-to {:class "btn btn-lg btn-primary"} "#" "Sign up now!")]
+    (link-to {:class "btn btn-lg btn-primary"} "/signup" "Sign up now!")]
    (link-to "http://rubyonrails.org/"
             (image {:alt "Rails logo"} "/images/rails.png"))))
