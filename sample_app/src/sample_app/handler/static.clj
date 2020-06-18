@@ -8,15 +8,15 @@
 
 (defmethod ig/init-key :sample-app.handler.static/home [_ _]
   (fn [_]
-    [::response/ok (str (view.home/render-home))]))
+    [::response/ok (view.home/render-home)]))
 
 (defmethod ig/init-key :sample-app.handler.static/help [_ _]
   (fn [_]
-    [::response/ok (str (view.help/render-help))]))
+    [::response/ok (view.help/render-help)]))
 
 (defmethod ig/init-key :sample-app.handler.static/about [_ _]
   (fn [_]
-    [::response/ok (str (view.about/render-about))]))
+    [::response/ok (view.about/render-about)]))
 
 (defmethod ig/init-key :sample-app.handler.static/contact [_ _]
   (fn [_]
