@@ -1,0 +1,29 @@
+{:duct.profile/base
+ {:duct.core/project-ns sample-app
+
+  :duct.router/ataraxy
+  {:routes   {[:get "/"] [:home]
+              [:get "/help"] [:help]
+              [:get "/about"] [:about]
+              [:get "/contact"] [:contact]
+              [:get "/signup"] [:users/new]}
+   :handlers {:home #ig/ref :sample-app.handler.static/home
+              :help #ig/ref :sample-app.handler.static/help
+              :about #ig/ref :sample-app.handler.static/about
+              :contact #ig/ref :sample-app.handler.static/contact
+              :users/new #ig/ref :sample-app.handler.users/new}}
+
+  :sample-app.handler.users/new      {}
+  :sample-app.handler.static/home    {}
+  :sample-app.handler.static/help    {}
+  :sample-app.handler.static/about   {}
+  :sample-app.handler.static/contact {}}
+
+ :duct.profile/dev   #duct/include "dev"
+ :duct.profile/local #duct/include "local"
+ :duct.profile/test  #duct/include "testenv"
+ :duct.profile/prod  {}
+
+ :duct.module/logging {}
+ :duct.module.web/site
+ {}}
