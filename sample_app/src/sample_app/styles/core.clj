@@ -8,7 +8,7 @@
   [:section {:overflow :auto}]
   [:textarea {:resize :vertical}]
   [:.center {:text-align :center}
-   :h1 {:margin-bottom "10px"}]
+   [:h1 {:margin-bottom "10px"}]]
 
   ;; typography
   [:h1 :h2 :h3 :h4 :h5 :h6 {:line-height 1}]
