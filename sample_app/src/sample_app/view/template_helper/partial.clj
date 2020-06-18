@@ -14,8 +14,8 @@
     (link-to "http://www.michaelhartl.com/" "Michael Hartl")]
    [:nav
     [:ul
-     [:li (link-to "#" "About")]
-     [:li (link-to "#" "Contact")]
+     [:li (link-to "/about" "About")]
+     [:li (link-to "/contact" "Contact")]
      [:li (link-to "http://news.railstutorial.org/" "News")]]]])
 
 (defn header []
@@ -24,8 +24,8 @@
     (link-to {:id "logo"} "#" "sample app")
     [:nav
      [:ul.nav.navbar-nav.navbar-right
-      [:li (link-to "#" "Home")]
-      [:li (link-to "#" "Help")]
+      [:li (link-to "/" "Home")]
+      [:li (link-to "/help" "Help")]
       [:li (link-to "#" "Log in")]]]]])
 
 (defn shim []
