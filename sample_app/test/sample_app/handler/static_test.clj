@@ -15,30 +15,23 @@
             (k/within [:title]
                       (kt/has (kt/text? base-title)))))
 
-      (t/testing "should get home"
-        (-> (k/session routes)
-            (k/visit "/static_pages/home")
-            (kt/has (kt/status? 200))
-            (k/within [:title]
-                      (kt/has (kt/text? base-title)))))
-
       (t/testing "should get help"
         (-> (k/session routes)
-            (k/visit "/static_pages/help")
+            (k/visit "/help")
             (kt/has (kt/status? 200))
             (k/within [:title]
                       (kt/has (kt/text? (str "Help | " base-title))))))
 
       (t/testing "should get about"
         (-> (k/session routes)
-            (k/visit "/static_pages/about")
+            (k/visit "/about")
             (kt/has (kt/status? 200))
             (k/within [:title]
                       (kt/has (kt/text? (str "About | " base-title))))))
 
       (t/testing "should get contact"
         (-> (k/session routes)
-            (k/visit "/static_pages/contact")
+            (k/visit "/contact")
             (kt/has (kt/status? 200))
             (k/within [:title]
                       (kt/has (kt/text? (str "Contact | " base-title)))))))))

@@ -2,14 +2,14 @@
  {:duct.core/project-ns sample-app
 
   :duct.router/ataraxy
-  {:routes   {"/" [:root]
-              "/static_pages"
-              {[:get "/home"] [:home]
-               "/help"        [:sample-app.handler.static/help]
-               "/about"       [:sample-app.handler.static/about]
-               "/contact"     [:sample-app.handler.static/contact]}}
+  {:routes   {[:get "/"] [:home]
+              [:get "/help"] [:help]
+              [:get "/about"] [:about]
+              [:get "/contact"] [:contact]}
    :handlers {:home #ig/ref :sample-app.handler.static/home
-              :root #ig/ref :sample-app.handler.static/home}}
+              :help #ig/ref :sample-app.handler.static/help
+              :about #ig/ref :sample-app.handler.static/about
+              :contact #ig/ref :sample-app.handler.static/contact}}
 
   :sample-app.handler.static/home    {}
   :sample-app.handler.static/help    {}
