@@ -6,7 +6,9 @@
                  [duct/core "0.8.0"]
                  [duct/module.ataraxy "0.3.0"]
                  [duct/module.logging "0.5.0"]
-                 [duct/module.web "0.7.0"]]
+                 [duct/module.web "0.7.0"]
+                 [duct/module.sql "0.6.0"]
+                 [org.postgresql/postgresql "42.2.14"]]
   :plugins [[duct/lein-duct "0.12.1"]
             [lein-garden "0.3.0"]]
   :main ^:skip-aot sample-app.main

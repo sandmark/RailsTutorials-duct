@@ -1,1 +1,2 @@
-{}
+{:duct.database.sql/hikaricp
+ {:jdbc-url "jdbc:postgresql://localhost:5432/rails_tutorial?user=rails_tutorial&password=password123"}}
