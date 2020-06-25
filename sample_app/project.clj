@@ -7,6 +7,7 @@
                  [duct/module.ataraxy "0.3.0"]
                  [duct/module.logging "0.5.0"]
                  [duct/module.web "0.7.0"]
+                 [honeysql "1.0.444"]
                  [duct/module.sql "0.6.0"]
                  [org.postgresql/postgresql "42.2.14"]]
   :plugins [[duct/lein-duct "0.12.1"]

@@ -25,6 +25,9 @@
 (defn test []
   (eftest/run-tests (eftest/find-tests "test")))
 
+(defn db-run [f & args]
+  (apply f (:duct.database.sql/hikaricp system) args))
+
 (def profiles
   [:duct.profile/dev :duct.profile/local])
 
