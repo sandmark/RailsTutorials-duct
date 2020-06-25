@@ -27,12 +27,13 @@
                   :repl-options {:init-ns user}}
    :uberjar      {:aot :all}
    :profiles/dev {}
-   :project/dev  {:source-paths   ["dev/src"]
+   :project/dev  {:source-paths   ["dev/src" "spec"]
                   :resource-paths ["dev/resources" "test/resources"]
                   :dependencies   [[integrant/repl "0.3.1"]
                                    [eftest "0.5.9"]
                                    [kerodon "0.9.1"]
                                    [hawk "0.2.11"]
+                                   [orchestra "2019.02.06-1"]
                                    [garden "1.3.10"]]
                   :plugins        [[jonase/eastwood "0.3.11"]
                                    [lein-cljfmt "0.6.7"]
@@ -41,7 +42,7 @@
                   :aliases        {"test-coverage" ^{:doc "Execute cloverage."}
                                    ["cloverage" "--ns-exclude-regex" "^(:?dev|user)$" "--codecov" "--junit"]
 
-                                   "lint"          ^{:doc "Execute cljfmt check, eastwood and kibit."}
+                                   "lint" ^{:doc "Execute cljfmt check, eastwood and kibit."}
                                    ["do"
                                     ["cljfmt" "check"]
                                     ["eastwood" "{:source-paths [\"src\"]
