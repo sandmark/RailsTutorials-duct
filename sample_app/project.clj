@@ -33,4 +33,17 @@
                                    [eftest "0.5.9"]
                                    [kerodon "0.9.1"]
                                    [hawk "0.2.11"]
-                                   [garden "1.3.10"]]}})
+                                   [garden "1.3.10"]]
+                  :plugins        [[jonase/eastwood "0.3.11"]
+                                   [lein-cljfmt "0.6.7"]
+                                   [lein-cloverage "1.1.2"]
+                                   [lein-kibit "0.1.8"]]
+                  :aliases        {"test-coverage" ^{:doc "Execute cloverage."}
+                                   ["cloverage" "--ns-exclude-regex" "^(:?dev|user)$" "--codecov" "--junit"]
+
+                                   "lint"          ^{:doc "Execute cljfmt check, eastwood and kibit."}
+                                   ["do"
+                                    ["cljfmt" "check"]
+                                    ["eastwood" "{:source-paths [\"src\"]
+                                                  :test-paths []}"]
+                                    ["kibit"]]}}})
