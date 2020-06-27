@@ -1,7 +1,7 @@
 (ns sample-app.boundary.db.user-test.spec
   (:require [clojure.spec.alpha :as s]
             [sample-app.boundary.db.core.spec :as db]
-            [sample-app.db.user-test :as sut]))
+            [sample-app.boundary.db.user-test :as sut]))
 
 (s/def ::name string?)
 (s/def ::email string?)
