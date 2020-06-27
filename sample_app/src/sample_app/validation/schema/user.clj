@@ -17,6 +17,7 @@
    [:email
     struct/required
     struct/string
+    struct/email
     presented
     [struct/max-count 255]]])
 

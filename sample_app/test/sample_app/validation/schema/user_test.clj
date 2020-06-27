@@ -20,4 +20,20 @@
 
     (t/testing "email should not be too long"
       (let [long-email (format "%s@example.com" (str/join (repeat 244 \a)))]
-        (t/is (not (sut/valid-user? (assoc user :email long-email))))))))
+        (t/is (not (sut/valid-user? (assoc user :email long-email))))))
+
+    (t/testing "email validation should accept valid addresses"
+      (t/are [address] (sut/valid-user? (assoc user :email address))
+        "user@example.com"
+        "USER@foo.COM"
+        "A_US-ER@foo.bar.org"
+        "first.last@foo.jp"
+        "alice+bob@baz.cn"))
+
+    (t/testing "email validation should reject invalid addresses"
+      (t/are [address] (not (sut/valid-user? (assoc user :email address)))
+        "user@example,com"
+        "user_at_foo.org"
+        "user.name@example."
+        "foo@bar_baz.com"
+        "foo@bar+baz.com"))))
