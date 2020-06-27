@@ -9,3 +9,6 @@
 
 (def validator
   [[:name struct/required struct/string presented]])
+
+(defn valid-user? [user]
+  (struct/valid? user validator))
