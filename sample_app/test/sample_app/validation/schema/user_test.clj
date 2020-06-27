@@ -1,6 +1,7 @@
 (ns sample-app.validation.schema.user-test
   (:require [sample-app.validation.schema.user :as sut]
-            [clojure.test :as t]))
+            [clojure.test :as t]
+            [clojure.string :as str]))
 
 (t/deftest validation-test
   (let [user {:name "Example User" :email "user@example.com"}]
@@ -11,4 +12,8 @@
       (t/is (not (sut/valid-user? (assoc user :name "     ")))))
 
     (t/testing "email should be present"
-      (t/is (not (sut/valid-user? (assoc user :email "    ")))))))
+      (t/is (not (sut/valid-user? (assoc user :email "    ")))))
+
+    (t/testing "name should not be too long"
+      (let [long-name (str/join (repeat 51 \a))]
+        (t/is (not (sut/valid-user? (assoc user :name long-name))))))))

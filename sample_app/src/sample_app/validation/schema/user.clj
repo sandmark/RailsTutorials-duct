@@ -8,8 +8,16 @@
    :validate (comp not str/blank?)})
 
 (def validator
-  [[:name struct/required struct/string presented]
-   [:email struct/required struct/string presented]])
+  [[:name
+    struct/required
+    struct/string
+    presented
+    [struct/max-count 50]]
+
+   [:email
+    struct/required
+    struct/string
+    presented]])
 
 (defn valid-user? [user]
   (struct/valid? user validator))
