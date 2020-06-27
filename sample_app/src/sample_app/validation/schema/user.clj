@@ -17,7 +17,8 @@
    [:email
     struct/required
     struct/string
-    presented]])
+    presented
+    [struct/max-count 255]]])
 
 (defn valid-user? [user]
   (struct/valid? user validator))

@@ -16,4 +16,8 @@
 
     (t/testing "name should not be too long"
       (let [long-name (str/join (repeat 51 \a))]
-        (t/is (not (sut/valid-user? (assoc user :name long-name))))))))
+        (t/is (not (sut/valid-user? (assoc user :name long-name))))))
+
+    (t/testing "email should not be too long"
+      (let [long-email (format "%s@example.com" (str/join (repeat 244 \a)))]
+        (t/is (not (sut/valid-user? (assoc user :email long-email))))))))
