@@ -3,7 +3,8 @@
             clj-time.jdbc
             duct.database.sql
             [honeysql.core :as sql]
-            [sample-app.boundary.db.core :as db]))
+            [sample-app.boundary.db.core :as db]
+            [sample-app.validation.schema.user :as schema.user]))
 
 (defprotocol UserDatabase
   (get-user-by-id [db id])
@@ -16,7 +17,8 @@
                                    :from :users
                                    :where [:= :id id])))
   (create-user [db user]
-    (let [now (time/now)]
-      (db/insert! db :users (assoc user
-                                   :created_at now
-                                   :updated_at now)))))
+    (when (schema.user/valid-user? user)
+      (let [now (time/now)]
+        (db/insert! db :users (assoc user
+                                     :created_at now
+                                     :updated_at now))))))

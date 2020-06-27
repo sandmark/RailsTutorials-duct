@@ -31,4 +31,9 @@
         (t/testing "should be same timestamps when created"
           (let [created-user (create-user db example-user)]
             (t/is (= (:created_at created-user)
-                     (:updated_at created-user)))))))))
+                     (:updated_at created-user))))))
+
+      (with-db [db system]
+        (t/testing "should not be saved without validations"
+          (sut/create-user db {:name "    " :email "invalid"})
+          (t/is (zero? (db/select-count db (sql/build :from :users)))))))))
