@@ -4,6 +4,7 @@
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [funcool/struct "1.4.0"]
+                 [buddy/buddy-hashers "1.4.0"]
                  [duct/core "0.8.0"]
                  [duct/module.ataraxy "0.3.0"]
                  [duct/module.logging "0.5.0"]
