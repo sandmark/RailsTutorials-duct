@@ -31,4 +31,9 @@
         (t/testing "should be same timestamps when created"
           (let [created-user (create-user db example-user)]
             (t/is (= (:created_at created-user)
-                     (:updated_at created-user)))))))))
+                     (:updated_at created-user))))))
+
+      (with-db [db system]
+        (t/testing "should not be saved with duplicated email"
+          (t/is (integer? (sut/create-user db example-user)))
+          (t/is (nil? (sut/create-user db example-user))))))))

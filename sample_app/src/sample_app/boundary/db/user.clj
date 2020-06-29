@@ -17,6 +17,9 @@
                                    :where [:= :id id])))
   (create-user [db user]
     (let [now (time/now)]
-      (db/insert! db :users (assoc user
-                                   :created_at now
-                                   :updated_at now)))))
+      (try
+        (db/insert! db :users (assoc user
+                                     :created_at now
+                                     :updated_at now))
+        (catch org.postgresql.util.PSQLException _
+          nil)))))
