@@ -23,7 +23,7 @@
     result))
 
 (defn test []
-  (eftest/run-tests (eftest/find-tests "test")))
+  (eftest/run-tests (eftest/find-tests "test") {:multithread? false}))
 
 (defn db-run [f & args]
   (apply f (:duct.database.sql/hikaricp system) args))
