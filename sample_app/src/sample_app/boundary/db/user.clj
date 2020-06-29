@@ -7,7 +7,8 @@
 
 (defprotocol UserDatabase
   (get-user-by-id [db id])
-  (create-user [db user]))
+  (create-user [db user])
+  (email-exists? [db email]))
 
 (extend-protocol UserDatabase
   duct.database.sql.Boundary
@@ -15,6 +16,7 @@
     (db/select-first db (sql/build :select :*
                                    :from :users
                                    :where [:= :id id])))
+
   (create-user [db user]
     (let [now (time/now)]
       (try
@@ -22,4 +24,9 @@
                                      :created_at now
                                      :updated_at now))
         (catch org.postgresql.util.PSQLException _
-          nil)))))
+          nil))))
+
+  (email-exists? [db email]
+    (not (zero? (db/select-count db (sql/build :select :id
+                                               :from :users
+                                               :where [:= :email email]))))))

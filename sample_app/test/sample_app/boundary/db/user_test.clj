@@ -36,3 +36,16 @@
         (t/testing "should not be saved with duplicated email"
           (t/is (integer? (sut/create-user db example-user)))
           (t/is (nil? (sut/create-user db example-user))))))))
+
+(t/deftest user-select-test
+  (let [user (get-in (helper/test-data) [::users :example-user])]
+    (with-system [system (helper/test-system)]
+      (with-db [db system]
+        (t/testing "should return true if email exists"
+          (let [id (sut/create-user db user)]
+            (t/is (integer? id))
+            (t/is (sut/email-exists? db (:email user))))))
+
+      (with-db [db system]
+        (t/testing "should return false if email doesn't exist"
+          (t/is (not (sut/email-exists? db "not@exist.com"))))))))

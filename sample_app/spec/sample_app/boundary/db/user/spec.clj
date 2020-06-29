@@ -19,3 +19,8 @@
   :args (s/cat :db ::db/db
                :user ::user)
   :ret (s/nilable ::db/row-id))
+
+(s/fdef sut/email-exists?
+  :args (s/cat :db ::db/db
+               :email ::email)
+  :ret boolean?)
