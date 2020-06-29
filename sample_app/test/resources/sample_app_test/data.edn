@@ -1,6 +1,16 @@
 {:sample-app.view.template/title "Ruby on Rails Tutorial Sample App"
- :sample-app.db/users
- {:example-user   {:name  "Michael Hartl"
-                   :email "mhartl@example.com"}
-  :multiple-users {:users [{:name "user1" :email "email1@example.com"}
-                           {:name "user2" :email "email2@example.com"}]}}}
+ :sample-app.validation.schema.user-test/users
+ {:example-user {:name                  "Michael Hartl"
+                 :email                 "mhartl@example.com"
+                 :password              "password123"
+                 :password-confirmation "password123"}}
+ :sample-app.boundary.db.user-test/users
+ {:example-user   {:name            "Michael Hartl"
+                   :email           "mhartl@example.com"
+                   :password_digest ""}
+  :multiple-users {:users [{:name            "user1"
+                            :email           "email1@example.com"
+                            :password_digest ""}
+                           {:name            "user2"
+                            :email           "email2@example.com"
+                            :password_digest ""}]}}}

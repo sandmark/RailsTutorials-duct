@@ -1,10 +1,11 @@
 (ns sample-app.validation.schema.user-test
   (:require [sample-app.validation.schema.user :as sut]
             [clojure.test :as t]
-            [clojure.string :as str]))
+            [clojure.string :as str]
+            [sample-app.test-helper.core :as helper]))
 
 (t/deftest validation-test
-  (let [user {:name "Example User" :email "user@example.com"}]
+  (let [user (get-in (helper/test-data) [::users :example-user])]
     (t/testing "should be valid"
       (t/is (sut/valid-user? user)))
 
@@ -40,4 +41,7 @@
 
     (t/testing "email should be coersed from upcase to downcase"
       (t/is (= "example@example.com"
-               (:email (second (sut/validate-user (assoc user :email "EXAMPLE@EXAMPLE.COM")))))))))
+               (:email (second (sut/validate-user (assoc user :email "EXAMPLE@EXAMPLE.COM")))))))
+
+    (t/testing "password should be required"
+      (t/is (not (sut/valid-user? (dissoc user :password :password-confirmation)))))))

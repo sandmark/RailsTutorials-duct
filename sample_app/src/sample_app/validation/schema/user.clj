@@ -25,7 +25,16 @@
     struct/email
     downcase
     presented
-    [struct/max-count 255]]])
+    [struct/max-count 255]]
+
+   [:password
+    struct/required
+    struct/string]
+
+   [:password-confirmation
+    struct/required
+    struct/string
+    [struct/identical-to :password]]])
 
 (defn valid-user? [user]
   (struct/valid? user validator))

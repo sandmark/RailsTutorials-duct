@@ -6,14 +6,14 @@
 
 (t/deftest select-test
   (with-system [system (helper/test-system)]
-    (let [db-data-map  (-> (helper/test-data) :sample-app.db/users :multiple-users)
-          example-user (-> (helper/test-data) :sample-app.db/users :example-user)
+    (let [db-data-map  (get-in (helper/test-data) [:sample-app.boundary.db.user-test/users :multiple-users])
+          example-user (get-in (helper/test-data) [:sample-app.boundary.db.user-test/users :example-user])
           db           (:duct.database.sql/hikaricp system)]
       (with-db-data [system {:users [example-user]}]
         (t/testing "select-first"
           (t/is (= example-user
                    (select-keys (sut/select-first db (sql/build :select :* :from :users))
-                                [:name :email])))))
+                                [:name :email :password_digest])))))
 
       (with-db-data [system db-data-map]
         (t/testing "select"

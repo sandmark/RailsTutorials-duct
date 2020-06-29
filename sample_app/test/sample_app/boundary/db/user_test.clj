@@ -8,17 +8,16 @@
 (t/use-fixtures :once helper/instrument-specs)
 
 (defn create-user [db user]
-  (let [id           (sut/create-user db user)
-        created-user (sut/get-user-by-id db id)]
-    created-user))
+  (let [id (sut/create-user db user)]
+    (sut/get-user-by-id db id)))
 
 (t/deftest user-save-test
   (with-system [system (helper/test-system)]
-    (let [{:keys [example-user]} (:sample-app.db/users (helper/test-data))]
+    (let [example-user (get-in (helper/test-data) [::users :example-user])]
       (with-db [db system]
         (t/testing "should save user"
           (t/is (zero? (db/select-count db (sql/build :from :users))))
-          (sut/create-user db example-user)
+          (t/is (integer? (sut/create-user db example-user)))
           (t/is (= 1 (db/select-count db (sql/build :from :users))))))
 
       (with-db [db system]
