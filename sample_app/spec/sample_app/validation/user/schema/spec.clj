@@ -3,8 +3,8 @@
             [sample-app.boundary.db.user.spec :as user]
             [sample-app.validation.schema.user :as sut]))
 
-(s/def ::errors (s/nilable (s/keys :opt-un [::user/name ::user/email])))
 (s/def ::validated-user (s/keys :opt-un [::user/name ::user/email]))
+(s/def ::errors (s/nilable ::validated-user))
 (s/def ::validate-result (s/tuple ::errors ::validated-user))
 
 (s/fdef sut/valid-user?
