@@ -36,4 +36,8 @@
         "user_at_foo.org"
         "user.name@example."
         "foo@bar_baz.com"
-        "foo@bar+baz.com"))))
+        "foo@bar+baz.com"))
+
+    (t/testing "email should be coersed from upcase to downcase"
+      (t/is (= "example@example.com"
+               (:email (second (sut/validate-user (assoc user :email "EXAMPLE@EXAMPLE.COM")))))))))

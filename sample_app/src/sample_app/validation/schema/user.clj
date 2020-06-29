@@ -7,6 +7,11 @@
    :optional true
    :validate (comp not str/blank?)})
 
+(def downcase
+  {:message  "must be downcase"
+   :optional true
+   :coerce   #(str/lower-case %)})
+
 (def validator
   [[:name
     struct/required
@@ -18,8 +23,12 @@
     struct/required
     struct/string
     struct/email
+    downcase
     presented
     [struct/max-count 255]]])
 
 (defn valid-user? [user]
   (struct/valid? user validator))
+
+(defn validate-user [user]
+  (struct/validate user validator))
