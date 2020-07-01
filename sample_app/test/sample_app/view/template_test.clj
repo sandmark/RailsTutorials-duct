@@ -6,6 +6,8 @@
             [sample-app.test-helper.core :as helper]
             [sample-app.view.template :as sut]))
 
+(t/use-fixtures :once helper/instrument-specs)
+
 (t/deftest page-title-test
   (let [base-title (:sample-app.view.template/title (helper/test-data))]
     (t/testing "Base Title"

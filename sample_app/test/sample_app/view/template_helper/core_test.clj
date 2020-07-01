@@ -3,6 +3,8 @@
             [sample-app.test-helper.core :as helper]
             [sample-app.view.template-helper.core :as sut]))
 
+(t/use-fixtures :once helper/instrument-specs)
+
 (t/deftest template-helper-test
   (t/testing "full title helper"
     (let [base-title (:sample-app.view.template/title (helper/test-data))]
