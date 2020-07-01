@@ -21,3 +21,8 @@
   (t/testing "should return false if given passwords are not same"
     (let [encrypted (sut/hash-password "passwordA")]
       (t/is (false? (sut/check-password "passwordB" encrypted))))))
+
+(t/deftest md5-test
+  (t/testing "should generate md5 hash from string"
+    (t/is (= "b45cffe084dd3d20d928bee85e7b0f21"
+             (sut/md5 "string")))))

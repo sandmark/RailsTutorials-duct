@@ -5,6 +5,9 @@
 (s/def ::password string?)
 (s/def ::encrypted string?)
 
+(s/def ::md5 (s/and string?
+                    #(= 32 (count %))))
+
 (s/fdef sut/hash-password
   :args (s/cat :password ::password)
   :ret ::encrypted)
@@ -13,3 +16,7 @@
   :args (s/cat :attempt ::password
                :encrypted ::encrypted)
   :ret boolean?)
+
+(s/fdef sut/md5
+  :args (s/cat :s string?)
+  :ret ::md5)
