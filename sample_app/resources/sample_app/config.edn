@@ -8,14 +8,18 @@
               [:get "/help"]    [:help]
               [:get "/about"]   [:about]
               [:get "/contact"] [:contact]
-              [:get "/signup"]  [:users/new]}
-   :handlers {:home      #ig/ref :sample-app.handler.static/home
-              :help      #ig/ref :sample-app.handler.static/help
-              :about     #ig/ref :sample-app.handler.static/about
-              :contact   #ig/ref :sample-app.handler.static/contact
-              :users/new #ig/ref :sample-app.handler.users/new}}
+              [:get "/signup"]  [:users/new]
+              "/users"
+              {[:get "/" id] [:users/show ^int id]}}
+   :handlers {:home       #ig/ref :sample-app.handler.static/home
+              :help       #ig/ref :sample-app.handler.static/help
+              :about      #ig/ref :sample-app.handler.static/about
+              :contact    #ig/ref :sample-app.handler.static/contact
+              :users/new  #ig/ref :sample-app.handler.users/new
+              :users/show #ig/ref :sample-app.handler.users/show}}
 
   :sample-app.handler.users/new      {}
+  :sample-app.handler.users/show     {:db #ig/ref :duct.database/sql}
   :sample-app.handler.static/home    {}
   :sample-app.handler.static/help    {}
   :sample-app.handler.static/about   {}
