@@ -4,6 +4,8 @@
             [kerodon.test :refer [has status? text? link?]]
             [sample-app.test-helper.core :as helper :refer [with-system]]))
 
+(t/use-fixtures :once helper/instrument-specs)
+
 (t/deftest static-pages-with-kerodon-test
   (with-system [system (helper/test-system)]
     (let [routes     (:duct.router/ataraxy system)

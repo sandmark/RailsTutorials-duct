@@ -1,1 +1,19 @@
-{:sample-app.view.template/title "Ruby on Rails Tutorial Sample App"}
+{:sample-app.view.template/title "Ruby on Rails Tutorial Sample App"
+ :sample-app.validation.schema.user-test/users
+ {:example-user {:name                  "Michael Hartl"
+                 :email                 "mhartl@example.com"
+                 :password              "password123"
+                 :password-confirmation "password123"}}
+ :sample-app.boundary.db.user-test/users
+ {:example-user   {:name            "Michael Hartl"
+                   :email           "mhartl@example.com"
+                   ;; :password "M.Hartl"
+                   :password_digest "bcrypt+sha512$569f6133e8a8a51d8c6c2d85e66bcd54$12$8169d3aaee519e4e18732059f98a34d897868a74dd641d86"}
+  :multiple-users {:users [{:name            "user1"
+                            :email           "email1@example.com"
+                            ;; :password "password1"
+                            :password_digest "bcrypt+sha512$1e8be9b9d2f0a77a873708b353c942b5$12$8accfdc73ac1e536f088c84cf80502c564f2e2d94388986d"}
+                           {:name  "user2"
+                            :email "email2@example.com"
+                            ;; :password "password2"
+                            :password_digest "bcrypt+sha512$3285db587e1416aa8b6575eaa7f5df60$12$f4bff2534f516e03a1d56bcd0170468243a7bef51aa8f15a"}]}}}

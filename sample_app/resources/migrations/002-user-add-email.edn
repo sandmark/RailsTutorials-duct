@@ -1,0 +1,2 @@
+{:up   ["ALTER TABLE users ADD COLUMN email VARCHAR(255);"]
+ :down ["ALTER TABLE users DROP COLUMN email;"]}
