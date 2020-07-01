@@ -29,11 +29,15 @@
 
    [:password
     struct/required
-    struct/string]
+    struct/string
+    presented
+    [struct/min-count 6]]
 
    [:password-confirmation
     struct/required
     struct/string
+    presented
+    [struct/min-count 6]
     [struct/identical-to :password]]])
 
 (defn valid-user? [user]

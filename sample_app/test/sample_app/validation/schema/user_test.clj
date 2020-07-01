@@ -46,4 +46,16 @@
                (:email (second (sut/validate-user (assoc user :email "EXAMPLE@EXAMPLE.COM")))))))
 
     (t/testing "password should be required"
-      (t/is (not (sut/valid-user? (dissoc user :password :password-confirmation)))))))
+      (t/is (not (sut/valid-user? (dissoc user :password :password-confirmation)))))
+
+    (t/testing "password should not be blank"
+      (let [password (str/join (repeat 6 \space))]
+        (t/is (not (sut/valid-user? (assoc user
+                                           :password password
+                                           :password-confirmation password))))))
+
+    (t/testing "password should have a minimum length"
+      (let [password (str/join (repeat 5 \a))]
+        (t/is (not (sut/valid-user? (assoc user
+                                           :password password
+                                           :password-confirmation password))))))))
