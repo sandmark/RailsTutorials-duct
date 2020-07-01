@@ -1,7 +1,10 @@
 (ns sample-app.security.hash-test
-  (:require [sample-app.security.hash :as sut]
+  (:require [clojure.string :as str]
             [clojure.test :as t]
-            [clojure.string :as str]))
+            [sample-app.security.hash :as sut]
+            [sample-app.test-helper.core :as helper]))
+
+(t/use-fixtures :once helper/instrument-specs)
 
 (t/deftest encrypt-algorithm-test
   (t/testing "should use bcrypt+sha512"

@@ -4,6 +4,8 @@
             [sample-app.test-helper.core :as helper :refer [with-db-data with-system]]
             [honeysql.core :as sql]))
 
+(t/use-fixtures :once helper/instrument-specs)
+
 (t/deftest select-test
   (with-system [system (helper/test-system)]
     (let [db-data-map  (get-in (helper/test-data) [:sample-app.boundary.db.user-test/users :multiple-users])

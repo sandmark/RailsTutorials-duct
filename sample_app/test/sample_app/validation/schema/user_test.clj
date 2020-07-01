@@ -4,6 +4,8 @@
             [clojure.string :as str]
             [sample-app.test-helper.core :as helper]))
 
+(t/use-fixtures :once helper/instrument-specs)
+
 (t/deftest validation-test
   (let [user (get-in (helper/test-data) [::users :example-user])]
     (t/testing "should be valid"
