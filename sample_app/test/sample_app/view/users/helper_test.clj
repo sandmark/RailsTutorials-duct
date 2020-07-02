@@ -17,4 +17,8 @@
 
     (t/testing "should take options"
       (t/is (str/includes? (sut/gravatar-for user {:size 100})
-                           "?s=100")))))
+                           "?s=100")))
+
+    (t/testing "should escape html characters"
+      (t/is (not (str/includes? (sut/gravatar-for (assoc user :name "><><"))
+                                "><><"))))))

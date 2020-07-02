@@ -1,5 +1,6 @@
 (ns sample-app.view.users.helper
   (:require [clojure.string :as str]
+            [hiccup.core :as hiccup]
             [hiccup.element :as e]
             [sample-app.security.hash :as hash]))
 
@@ -10,4 +11,4 @@
   ([user {:keys [size]}]
    (let [id  (-> user :email str/lower-case hash/md5)
          url (str "https://secure.gravatar.com/avatar/" id "?s=" size)]
-     (e/image {:class "gravatar"} url (:name user)))))
+     (e/image {:class "gravatar"} url (hiccup/h (:name user))))))
