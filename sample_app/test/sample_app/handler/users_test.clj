@@ -23,4 +23,5 @@
           (let [[_ {:keys [id]}] (db.user/create-user db user)]
             (-> (session routes)
                 (visit (str "/users/" id))
-                (has (status? 200)))))))))
+                (has (status? 200))
+                (within [:title] (has (text? (str (:name user) " | " base-title)))))))))))
