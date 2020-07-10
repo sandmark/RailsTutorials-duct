@@ -2,6 +2,14 @@
   (:require [garden.core :as g]
             [garden.def :as gd :refer [defstyles]]))
 
+(defn box-sizing
+  ([]
+   (box-sizing :border-box))
+  ([model]
+   {:-webkit-box-sizing model ;; Safari <= 5
+    :-moz-box-sizing    model ;; Firefox <= 19
+    :box-sizing         model}))
+
 (defstyles screen
   ;; base
   [:body {:padding-top "60px"}]
@@ -67,4 +75,18 @@
           :margin-top     "0px"}]]]
   [:.gravatar {:float        :left
                :margin-right "10px"}]
-  [:.gravatar_edit {:margin-top "15px"}])
+  [:.gravatar_edit {:margin-top "15px"}]
+
+  ;; forms
+  [:input :textarea :select :.uneditable-input
+   (merge {:border        [["1px" "solid" "#bbb"]]
+           :width         "100%"
+           :margin-bottom "15px"}
+          (box-sizing))]
+
+  [:#error_explanation {:color :red}
+   [:ul {:color  :red
+         :margin [[0 0 "30px" 0]]}]]
+
+  [:.field_with_errors
+   [:.form-control {:color :red}]])
